@@ -16,8 +16,11 @@ class ClasseFactory extends Factory
      */
     public function definition(): array
     {
+        $series = ['A','C', 'D', 'E'];
+        $niveaux = ['6ème', '5ème', '4ème', '3ème', '2nde', '1ère', 'Terminale'];
+
         return [
-            'nom_classe' => $this->faker->unique()->word(),
+            'nom_classe' => $this->faker->randomElement($niveaux) . ' ' . $this->faker->randomElement($series),
         ];
     }
 }

@@ -14,7 +14,7 @@ class EnseignantSearch extends Component
 
     public function render()
     {
-        $query = Enseignant::query()->with('classe');
+        $query = Enseignant::query();
 
         if (!empty($this->search)) {
             $query->where(function ($q) {

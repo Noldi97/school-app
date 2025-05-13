@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Enseignant;
-use App\Models\Classe;
+
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Enseignant>
@@ -20,7 +20,6 @@ class EnseignantFactory extends Factory
             'prenom' => $this->faker->firstName,
             'specialite' => $this->faker->word,
             'email' => $this->faker->unique()->safeEmail(),
-            'classe_id' => Classe::inRandomOrder()->first()->id ?? Classe::factory(),
         ];
     }
 }

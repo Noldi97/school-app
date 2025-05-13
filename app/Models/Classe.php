@@ -15,14 +15,9 @@ class Classe extends Model
 
     protected $fillable = ['nom_classe'];
 
-    public function enseignants()
+    public function cours()
     {
-        return $this->hasMany(Enseignant::class);
-    }
-
-    public function etudiants()
-    {
-        return $this->hasMany(Etudiant::class);
+        return $this->hasMany(Cours::class);
     }
 
 }

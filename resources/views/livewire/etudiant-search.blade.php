@@ -60,15 +60,6 @@
                     <p
                         class="font-medium text-gray-500 text-theme-xs dark:text-gray-400"
                     >
-                        Classe
-                    </p>
-                    </div>
-                </th>
-                <th class="py-3">
-                    <div class="flex items-center col-span-2">
-                    <p
-                        class="font-medium text-gray-500 text-theme-xs dark:text-gray-400"
-                    >
                         Action
                     </p>
                     </div>
@@ -85,7 +76,6 @@
                             <td class="py-3 font-medium text-gray-500 text-theme-xs dark:text-gray-400">{{ $etudiant->nom }}</td>
                             <td class="py-3 font-medium text-gray-500 text-theme-xs dark:text-gray-400">{{ $etudiant->prenom }}</td>
                             <td class="py-3 font-medium text-gray-500 text-theme-xs dark:text-gray-400">{{ $etudiant->email }}</td>
-                            <td class="py-3 font-medium text-gray-500 text-theme-xs dark:text-gray-400">{{ $etudiant->classe->nom_classe ?? 'Non attribuée' }}</td>
                             <td class="py-3 font-medium text-gray-500 text-theme-xs dark:text-gray-400">
                                 <div class="flex items-center space-x-3">
                                     <a href="{{ route('etudiant.edit', $etudiant->id) }}" class="text-blue-600 hover:text-blue-800 transition-colors" title="Modifier">

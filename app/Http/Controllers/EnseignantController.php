@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Enseignant;
-use App\Models\Classe;
 use Illuminate\Support\Facades\Validator;
 
 class EnseignantController extends Controller
@@ -19,8 +18,7 @@ class EnseignantController extends Controller
 
     public function create()
     {
-        $classes = Classe::all();
-        return view('enseignant.create', compact('classes'));
+        return view('enseignant.create');
     }
 
     public function store(Request $request)
@@ -30,7 +28,6 @@ class EnseignantController extends Controller
             'prenom' => 'required',
             'specialite' => 'required',
             'email' => 'required|email|unique:enseignants',
-            'classe_id' => 'required|exists:classes,id',
         ]);
 
         Enseignant::create($validated);
@@ -41,8 +38,7 @@ class EnseignantController extends Controller
     public function edit($id)
     {
         $enseignants = Enseignant::findOrFail($id);
-        $classes = Classe::all();
-        return view('enseignant.edit', compact('enseignants', 'classes'));
+        return view('enseignant.edit', compact('enseignants'));
     }
 
 
@@ -56,7 +52,6 @@ class EnseignantController extends Controller
             'prenom' => 'required|string|max:255',
             'specialite' => 'required|string|max:255',
             'email' => 'required|email|unique:enseignants,email,' . $enseignants->id,
-            'classe_id' => 'required|exists:classes,id',
         ]);
         if ($validator->fails()) {
             return redirect()->back()
@@ -69,14 +64,12 @@ class EnseignantController extends Controller
             'prenom' => 'required|string|max:255',
             'specialite' => 'required|string|max:255',
             'email' => 'required|email|unique:enseignants,email,' . $enseignants->id,
-            'classe_id' => 'required|exists:classes,id',
         ]);
         // Update the enseignant
         $enseignants->nom = $validated['nom'];
         $enseignants->prenom = $validated['prenom'];
         $enseignants->specialite = $validated['specialite'];
         $enseignants->email = $validated['email'];
-        $enseignants->classe_id = $validated['classe_id'];
         // Save the enseignant
         $enseignants->save();
         // Redirect to the enseignant index page with success message

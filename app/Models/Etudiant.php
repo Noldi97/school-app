@@ -11,11 +11,25 @@ class Etudiant extends Model
 
     protected $table = 'etudiants';
 
-    protected $fillable = ['nom','prenom', 'email', 'classe_id'];
+    protected $fillable = [
+        'nom',
+        'prenom',
+        'email'
+    ];
 
-    public function classe()
+    public function evaluations()
     {
-        return $this->belongsTo(Classe::class);
+        return $this->hasMany(Evaluation::class);
+    }
+
+    public function notes()
+    {
+        return $this->hasMany(Note::class);
+    }
+
+    public function presences()
+    {
+        return $this->hasMany(Presence::class);
     }
 
 }

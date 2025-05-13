@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Etudiant;
-use App\Models\Classe;
 use Illuminate\Support\Facades\Validator;
 
 class EtudiantController extends Controller
@@ -19,8 +18,7 @@ class EtudiantController extends Controller
 
     public function create()
     {
-        $classes = Classe::all();
-        return view('etudiant.create', compact('classes'));
+        return view('etudiant.create');
     }
 
     public function store(Request $request)
@@ -29,7 +27,6 @@ class EtudiantController extends Controller
             'nom' => 'required',
             'prenom' => 'required',
             'email' => 'required|email|unique:enseignants',
-            'classe_id' => 'required|exists:classes,id',
         ]);
 
         Etudiant::create($validated);
@@ -40,8 +37,7 @@ class EtudiantController extends Controller
     public function edit($id)
     {
         $etudiants = Etudiant::findOrFail($id);
-        $classes = Classe::all();
-        return view('etudiant.edit', compact('etudiants', 'classes'));
+        return view('etudiant.edit', compact('etudiants'));
     }
 
 
@@ -54,7 +50,6 @@ class EtudiantController extends Controller
             'nom' => 'required|string|max:255',
             'prenom' => 'required|string|max:255',
             'email' => 'required|email|unique:enseignants,email,' . $etudiants->id,
-            'classe_id' => 'required|exists:classes,id',
         ]);
         if ($validator->fails()) {
             return redirect()->back()
@@ -66,13 +61,11 @@ class EtudiantController extends Controller
             'nom' => 'required|string|max:255',
             'prenom' => 'required|string|max:255',
             'email' => 'required|email|unique:enseignants,email,' . $etudiants->id,
-            'classe_id' => 'required|exists:classes,id',
         ]);
         // Update the enseignant
         $etudiants->nom = $validated['nom'];
         $etudiants->prenom = $validated['prenom'];
         $etudiants->email = $validated['email'];
-        $etudiants->classe_id = $validated['classe_id'];
         // Save the enseignant
         $etudiants->save();
         // Redirect to the enseignant index page with success message

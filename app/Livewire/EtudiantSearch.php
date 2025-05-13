@@ -11,7 +11,7 @@ class EtudiantSearch extends Component
 
     public function render()
     {
-        $query = Etudiant::query()->with('classe');
+        $query = Etudiant::query();
 
         if (!empty($this->search)) {
             $query->where(function ($q) {

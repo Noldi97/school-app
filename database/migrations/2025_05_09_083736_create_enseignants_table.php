@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('prenom');
             $table->string('specialite');
             $table->string('email')->unique();
-            $table->foreignId('classe_id')->constrained('classes')->onDelete('cascade');
             $table->timestamps();
         });
     }

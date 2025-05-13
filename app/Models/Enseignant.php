@@ -16,15 +16,13 @@ class Enseignant extends Model
         'nom',
         'prenom',
         'specialite',
-        'email',
-        'classe_id'
+        'email'
     ];
 
-    public function classe()
+    public function cours()
     {
-        return $this->belongsTo(Classe::class);
+        return $this->hasMany(Cours::class);
     }
-
 
 }
 

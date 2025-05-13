@@ -33,7 +33,7 @@
                     <p
                         class="font-medium text-gray-500 text-theme-xs dark:text-gray-400"
                     >
-                        Nom
+                        Nom Classe
                     </p>
                     </div>
                 </th>

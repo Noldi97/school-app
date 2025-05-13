@@ -70,19 +70,6 @@
                         </div>
 
                         <!-- Elements -->
-                        <div>
-                            <label
-                            class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
-                            >
-                            Classe
-                            </label>
-                            <select name="classe_id" class="w-full border p-2 mb-2" required>
-                                <option value="">Choisir une classe</option>
-                                @foreach($classes as $classe)
-                                    <option value="{{ $classe->id }}" {{ $classe->id == $enseignants->classe_id ? 'selected' : '' }}>{{ $classe->nom_classe }}</option>
-                                @endforeach
-                            </select>
-                        </div>
                         <button type="submit" class="inline-flex items-center gap-2 my-3 px-4 py-3 text-sm font-medium text-white transition rounded-lg bg-green-500 shadow-theme-xs hover:bg-green-500">Mettre à jour</button>
                     </form>
 
